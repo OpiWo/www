@@ -4,6 +4,25 @@
 You are the **WWW Agent** for OpiWo. You own `/srv/opiwo/www/` exclusively.
 Never touch `/srv/opiwo/backend/` or `/srv/opiwo/asgard/`.
 
+## Hosting — Vercel (NOT the VPS)
+WWW is deployed on **Vercel**, connected to `github.com/OpiWo/www`.
+Vercel auto-deploys on every push to `main`.
+
+**There is no Docker container, no VPS process, no `docker compose` for WWW.**
+Deployment = commit + push. That's it.
+
+```bash
+git add .
+git commit -m "feat(WWWXX): ..."
+git push
+# Vercel picks it up automatically — done.
+```
+
+`NEXT_PUBLIC_*` env vars live in the **Vercel dashboard** (Project → Settings → Environment Variables).
+Never commit production values to the repo. `.env.local` is for local dev only.
+
+---
+
 ## Project
 WWW is the public-facing website for OpiWo — a global opinion platform where users
 browse topics, vote, and explore opinion data across demographics and languages.
@@ -31,7 +50,7 @@ Never produce generic or template-looking UI. Think Vercel, Linear, Stripe — t
 
 | Concern | Technology |
 |---|---|
-| Framework | Next.js 16.x — App Router, TypeScript strict, `output: 'standalone'` |
+| Framework | Next.js 16.x — App Router, TypeScript strict, deployed on Vercel |
 | Styling | Tailwind CSS v4 |
 | i18n | **next-intl** — locale in URL, browser detection, cookie override |
 | Server state | TanStack Query v5 |
@@ -135,11 +154,9 @@ messages/                           i18n message files — one per supported loc
   en.json                           English (primary, always complete)
 
 middleware.ts                       next-intl locale detection + redirect
-next.config.ts                      output: 'standalone', next-intl plugin
-.env.local                          NEXT_PUBLIC_API_URL, NEXT_PUBLIC_APP_URL
-Dockerfile
-docker-compose.yml
-.dockerignore
+next.config.ts                      next-intl plugin (no 'standalone' — Vercel handles builds)
+.env.local                          local dev only — NEXT_PUBLIC_API_URL, NEXT_PUBLIC_APP_URL
+                                    Production vars live in the Vercel dashboard, NOT here.
 ```
 
 ---
@@ -423,44 +440,32 @@ Use `date-fns` + next-intl's `useFormatter()` for locale-aware date formatting.
 
 ---
 
-## Docker (production)
+## Deployment — Vercel
 
+WWW is hosted on Vercel. **There is no Docker, no VPS container, no manual deploy step.**
+
+### Deploy to production
+```bash
+git add .
+git commit -m "feat(WWWXX): ..."
+git push
+# Vercel detects the push and auto-deploys — nothing else needed.
+```
+
+### Environment variables
+Managed in the **Vercel dashboard** under Project → Settings → Environment Variables:
+- `NEXT_PUBLIC_API_URL` → `https://api.opiwo.com`
+- `NEXT_PUBLIC_APP_URL` → `https://www.opiwo.com`
+
+After changing an env var in the Vercel dashboard, trigger a redeploy from the dashboard
+(or push a new commit).
+
+### Local development
 ```bash
 cd /srv/opiwo/www
-docker compose up -d --build    # build and start (always --build for env changes)
-docker compose logs -f
-```
-
-**Port:** `127.0.0.1:3002:3002` (3000=backend, 3001=Asgard, 3002=WWW)
-
-`NEXT_PUBLIC_*` vars are baked at build time — always rebuild when they change.
-
-### Dockerfile (multi-stage, same pattern as Asgard)
-```
-Stage 1 — deps:    npm ci
-Stage 2 — builder: npm run build (with NEXT_PUBLIC_* ARGs)
-Stage 3 — runner:  node:22-alpine, standalone output, PORT=3002
-```
-
-### docker-compose.yml
-```yaml
-services:
-  opiwo-www:
-    build:
-      context: .
-      args:
-        NEXT_PUBLIC_API_URL: https://api.opiwo.com
-        NEXT_PUBLIC_APP_URL: https://www.opiwo.com
-    container_name: opiwo-www
-    restart: unless-stopped
-    ports:
-      - '127.0.0.1:3002:3002'
-    healthcheck:
-      test: ['CMD', 'wget', '--no-verbose', '--tries=1', '--spider', 'http://127.0.0.1:3002/']
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 30s
+npm run dev          # starts Next.js dev server (port 3000 or as configured)
+npm run build        # verify build passes before pushing
+npm run lint         # check for lint errors
 ```
 
 ---
@@ -483,7 +488,7 @@ At each milestone end, produce `WWWXX-COMPLETE-SUMMARY.md` in the project root.
 
 | Milestone | Feature | Status |
 |---|---|---|
-| WWW10 | Project setup: Next.js 16 + next-intl + Tailwind v4 + Docker + Nginx + SSL + brand assets (logo, favicon, design tokens) | ⏳ Next |
+| WWW10 | Project setup: Next.js 16 + next-intl + Tailwind v4 + Vercel config + brand assets (logo, favicon, design tokens, color system) | ⏳ Next |
 | WWW20 | Home page: hero, trending topics, platform stats, header/footer | ⏳ Planned |
 | WWW30 | Topic list page: browse, filter by tag/language/option set, SSR | ⏳ Planned |
 | WWW40 | Topic detail page: results chart, opinion distribution, ISR | ⏳ Planned |
@@ -514,7 +519,8 @@ For each WWW milestone, verify:
 WWW: ⏳ NOT STARTED — folder created, CLAUDE.md written. Ready for WWW10 init.
 
 ## Known Gotchas
-- `NEXT_PUBLIC_*` vars are build-time only — always `--build` when values change.
+- **No Docker** — WWW runs on Vercel. Never create a Dockerfile or docker-compose for this project. Deployment is always `git push`, nothing more.
+- `NEXT_PUBLIC_*` vars are build-time only — update them in the Vercel dashboard and trigger a redeploy. Changing `.env.local` only affects local dev, never production.
 - next-intl requires `app/[locale]/` structure — never put pages directly in `app/` (except `layout.tsx` and `not-found.tsx`).
 - `middleware.ts` (not `proxy.ts`) — WWW uses standard Next.js middleware naming.
 - `useTranslations` is client-side only; use `getTranslations` in Server Components.
