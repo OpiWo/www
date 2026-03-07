@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 32" fill="none">
+  <!-- Icon mark -->
+  <circle cx="16" cy="16" r="16" fill="#f59e0b"/>
+  <rect x="8" y="10" width="16" height="2.5" rx="1.25" fill="white"/>
+  <rect x="8" y="14.75" width="12" height="2.5" rx="1.25" fill="white"/>
+  <rect x="8" y="19.5" width="8" height="2.5" rx="1.25" fill="white"/>
+  <!-- Wordmark -->
+  <text x="40" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" letter-spacing="-0.5">
+    <tspan fill="currentColor">Opi</tspan><tspan fill="#f59e0b">Wo</tspan>
+  </text>
+</svg>

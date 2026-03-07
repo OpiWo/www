@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "topics": "Topics",
+    "login": "Sign In",
+    "register": "Join OpiWo",
+    "profile": "My Profile",
+    "settings": "Settings",
+    "logout": "Sign Out"
+  },
+  "home": {
+    "hero_title": "The world's opinion, quantified.",
+    "hero_subtitle": "Explore what people think on topics that matter — across countries, languages, and demographics.",
+    "cta_explore": "Explore Topics",
+    "cta_join": "Join for free",
+    "stats_users": "Members worldwide",
+    "stats_topics": "Topics published",
+    "stats_opinions": "Opinions submitted",
+    "trending_title": "Trending Topics",
+    "trending_empty": "No trending topics right now."
+  },
+  "topics": {
+    "page_title": "Topics",
+    "search_placeholder": "Search topics...",
+    "filter_all_tags": "All tags",
+    "filter_all_languages": "All languages",
+    "filter_all_option_sets": "All option sets",
+    "empty_title": "No topics found",
+    "empty_description": "Try adjusting your search or filters.",
+    "load_more": "Load more",
+    "opinion_count": "{count, plural, one {# opinion} other {# opinions}}"
+  },
+  "topic": {
+    "results_title": "Results",
+    "submit_title": "Share your opinion",
+    "submit_cta": "Submit",
+    "login_to_vote": "Sign in to share your opinion",
+    "already_voted": "You've already answered this topic.",
+    "change_answer": "Change my answer",
+    "opinions_count": "{count, plural, one {# opinion} other {# opinions}}"
+  },
+  "auth": {
+    "login_title": "Welcome back",
+    "login_subtitle": "Sign in to your OpiWo account",
+    "register_title": "Join OpiWo",
+    "register_subtitle": "Create your account and start sharing your opinions",
+    "email_label": "Email",
+    "email_placeholder": "you@example.com",
+    "password_label": "Password",
+    "password_placeholder": "Your password",
+    "login_submit": "Sign In",
+    "register_submit": "Create Account",
+    "no_account": "Don't have an account?",
+    "have_account": "Already have an account?",
+    "register_link": "Join for free",
+    "login_link": "Sign in"
+  },
+  "profile": {
+    "title": "My Profile",
+    "history_title": "Opinion History",
+    "history_empty": "You haven't submitted any opinions yet.",
+    "settings_title": "Account Settings"
+  },
+  "errors": {
+    "not_found_title": "Page not found",
+    "not_found_description": "The page you're looking for doesn't exist.",
+    "server_title": "Something went wrong",
+    "server_description": "We couldn't load this page. Please try again.",
+    "retry": "Try again",
+    "go_home": "Go home"
+  },
+  "common": {
+    "loading": "Loading...",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "share": "Share",
+    "copied": "Copied!",
+    "language": "Language",
+    "theme_light": "Light",
+    "theme_dark": "Dark",
+    "theme_system": "System"
+  }
+}
