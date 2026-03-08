@@ -2,11 +2,8 @@ import { axiosInstance } from '@/lib/axios';
 import type { User, VerifyOtpResponse, CompleteRegistrationPayload } from '@/types/auth.types';
 
 export const authApi = {
-  async requestOtp(contact: string): Promise<{ success: true }> {
-    const { data } = await axiosInstance.post('/auth/request-otp', {
-      contact,
-      channel: 'sms',
-    });
+  async requestOtp(contact: string, channel: 'sms' | 'email'): Promise<{ success: true }> {
+    const { data } = await axiosInstance.post('/auth/request-otp', { contact, channel });
     return data;
   },
 

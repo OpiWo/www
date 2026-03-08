@@ -350,7 +350,7 @@ export function ContactStep({ onSuccess }: ContactStepProps) {
 
     setIsPending(true);
     try {
-      await authApi.requestOtp(contact);
+      await authApi.requestOtp(contact, method === 'phone' ? 'sms' : 'email');
       onSuccess(contact, method);
     } catch (err: unknown) {
       const code = getApiErrorCode(err);

@@ -274,7 +274,7 @@ export function PhoneStep({ onSuccess }: PhoneStepProps) {
   async function onSubmit(data: FormData) {
     setIsPending(true);
     try {
-      await authApi.requestOtp(data.phone);
+      await authApi.requestOtp(data.phone, 'sms');
       onSuccess(data.phone);
     } catch (err: unknown) {
       const code = getApiErrorCode(err);

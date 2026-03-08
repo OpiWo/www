@@ -112,7 +112,7 @@ export function OtpStep({ contact, contactMethod, onLoginSuccess, onRegisterRequ
   async function handleResend() {
     setIsResending(true);
     try {
-      await authApi.requestOtp(contact);
+      await authApi.requestOtp(contact, contactMethod === 'phone' ? 'sms' : 'email');
       toast.success(t('resend_success'));
       setDigits(Array(OTP_LENGTH).fill(''));
       inputRefs.current[0]?.focus();
