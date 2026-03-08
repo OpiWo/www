@@ -174,6 +174,22 @@
     "community_heading": "Community",
     "copyright": "© {year} OpiWo. All rights reserved."
   },
+  "pending_topics": {
+    "eyebrow": "Community vote",
+    "title": "Shape what's next",
+    "subtitle": "These topics are waiting for community approval. Vote to help the best ones get published.",
+    "empty": "No topics waiting for votes right now.",
+    "view_all": "View all",
+    "teaser_eyebrow": "Community vote",
+    "teaser_title": "Help decide what gets published",
+    "teaser_body": "OpiWo topics are community-approved. Members vote on submitted topics — the best ones rise to the top and get published for the world to answer.",
+    "teaser_cta": "Join to vote",
+    "teaser_sign_in": "Sign in",
+    "vote_up": "Upvote",
+    "vote_down": "Downvote",
+    "sign_in_to_vote": "Sign in to vote",
+    "net_score": "Score"
+  },
   "opinion_form": {
     "title": "What do you think?",
     "subtitle": "Select your answer below",

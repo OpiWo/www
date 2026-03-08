@@ -3,6 +3,7 @@ import { HeroSection } from '@/components/www/home/HeroSection';
 import { StatsBanner } from '@/components/www/home/StatsBanner';
 import { HowItWorks } from '@/components/www/home/HowItWorks';
 import { TrendingTopics } from '@/components/www/home/TrendingTopics';
+import { PendingTopics } from '@/components/www/home/PendingTopics';
 import type { Topic, TopicsResponse } from '@/types/topics.types';
 
 export const revalidate = 60;
@@ -31,8 +32,9 @@ export default async function HomePage() {
     <>
       <HeroSection />
       <StatsBanner />
-      <HowItWorks />
       <TrendingTopics initialTopics={initialTopics} />
+      <PendingTopics />
+      <HowItWorks />
     </>
   );
 }

@@ -13,6 +13,18 @@ export interface Topic {
   tags: Array<{ id: string; name: string }>;
   publishedAt: string | null;
   createdAt: string;
+  // Only present for pending topics
+  netScore?: number;
+  upvotes?: number;
+  downvotes?: number;
+}
+
+export interface VoteResponse {
+  success: true;
+  netScore: number;
+  upvotes: number;
+  downvotes: number;
+  userVote: 'upvote' | 'downvote';
 }
 
 export interface TopicsResponse {

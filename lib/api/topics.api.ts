@@ -16,6 +16,15 @@ export async function listTopics(params: ListTopicsParams = {}): Promise<TopicsR
   return data;
 }
 
+export async function listPendingTopics(
+  params: { lang?: string; limit?: number } = {},
+): Promise<TopicsResponse> {
+  const { data } = await api.get<TopicsResponse>('/topics', {
+    params: { status: 'pending', ...params },
+  });
+  return data;
+}
+
 export async function getTopic(id: string, lang?: string): Promise<TopicDetailResponse> {
   const { data } = await api.get<TopicDetailResponse>(`/topics/${id}`, {
     params: lang ? { lang } : undefined,
