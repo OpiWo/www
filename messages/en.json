@@ -19,7 +19,22 @@
     "trending_empty": "No trending topics right now.",
     "hero_eyebrow": "Global opinions, live",
     "hero_bars_label": "Live opinions",
-    "trending_eyebrow": "Featured"
+    "trending_eyebrow": "Featured",
+    "trending_view_all": "View all",
+    "hero_title_line1": "The world's opinion,",
+    "hero_title_line2": "quantified.",
+    "hero_social_proof": "Join 5,200+ members worldwide",
+    "stats_eyebrow": "Platform",
+    "stats_heading": "OpiWo by the numbers",
+    "how_eyebrow": "Get started",
+    "how_title": "How OpiWo works",
+    "how_step_label": "Step {n}",
+    "how_step1_title": "Browse",
+    "how_step1_desc": "Explore topics spanning politics, science, culture, and more. Filter by language, category, or what's trending.",
+    "how_step2_title": "Vote",
+    "how_step2_desc": "Cast your opinion anonymously or as a member. Your demographic profile enriches the data for everyone.",
+    "how_step3_title": "Discover",
+    "how_step3_desc": "See how the world really thinks — broken down by country, age, and language. Real data, real people."
   },
   "topics": {
     "page_title": "Topics",

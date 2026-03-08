@@ -1,6 +1,7 @@
 import { getLocale } from 'next-intl/server';
 import { HeroSection } from '@/components/www/home/HeroSection';
 import { StatsBanner } from '@/components/www/home/StatsBanner';
+import { HowItWorks } from '@/components/www/home/HowItWorks';
 import { TrendingTopics } from '@/components/www/home/TrendingTopics';
 import type { Topic, TopicsResponse } from '@/types/topics.types';
 
@@ -30,6 +31,7 @@ export default async function HomePage() {
     <>
       <HeroSection />
       <StatsBanner />
+      <HowItWorks />
       <TrendingTopics initialTopics={initialTopics} />
     </>
   );
