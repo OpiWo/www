@@ -135,7 +135,16 @@
     "error_birth_year_invalid": "Please enter a valid birth year.",
     "error_gender_invalid": "Please select a valid gender.",
     "error_country_invalid": "Please enter a valid 2-letter country code.",
-    "error_generic": "Something went wrong. Please try again."
+    "error_generic": "Something went wrong. Please try again.",
+    "tab_phone": "Phone",
+    "tab_email": "Email",
+    "step_contact": "Sign in",
+    "contact_title": "Welcome back.",
+    "contact_subtitle": "Enter your phone number or email to continue.",
+    "email_hint": "We'll send a one-time verification code to this address.",
+    "error_invalid_email": "Enter a valid email address.",
+    "otp_title_email": "Check your inbox.",
+    "back": "Back"
   },
   "profile": {
     "title": "My Profile",

@@ -14,6 +14,7 @@ import { getApiErrorCode } from './PhoneStep';
 
 interface OtpStepProps {
   contact: string;
+  contactMethod: 'phone' | 'email';
   onLoginSuccess: () => void;
   onRegisterRequired: (token: string) => void;
   onBack: () => void;
@@ -21,7 +22,7 @@ interface OtpStepProps {
 
 const OTP_LENGTH = 6;
 
-export function OtpStep({ contact, onLoginSuccess, onRegisterRequired, onBack }: OtpStepProps) {
+export function OtpStep({ contact, contactMethod, onLoginSuccess, onRegisterRequired, onBack }: OtpStepProps) {
   const t = useTranslations('auth');
   const { login } = useAuth();
   const router = useRouter();
@@ -131,7 +132,7 @@ export function OtpStep({ contact, onLoginSuccess, onRegisterRequired, onBack }:
       <p className="text-[0.65rem] font-medium tracking-[0.2em] uppercase text-primary mb-2">
         {t('step_otp')}
       </p>
-      <h1 className="text-3xl font-bold tracking-tight text-foreground mb-1">{t('otp_title')}</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-foreground mb-1">{contactMethod === 'email' ? t('otp_title_email') : t('otp_title')}</h1>
       <p className="text-sm text-muted-foreground mb-2 leading-relaxed">{t('otp_subtitle')}</p>
       <p className="text-sm font-semibold text-foreground mb-8">{contact}</p>
 
@@ -193,7 +194,7 @@ export function OtpStep({ contact, onLoginSuccess, onRegisterRequired, onBack }:
           className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="size-3.5" />
-          {t('back_to_phone')}
+          {t('back')}
         </button>
 
         <button
