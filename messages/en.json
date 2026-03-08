@@ -30,7 +30,18 @@
     "empty_title": "No topics found",
     "empty_description": "Try adjusting your search or filters.",
     "load_more": "Load more",
-    "opinion_count": "{count, plural, one {# opinion} other {# opinions}}"
+    "opinion_count": "{count, plural, one {# opinion} other {# opinions}}",
+    "filter_tag": "Tag",
+    "filter_option_set": "Type",
+    "filter_language": "Language",
+    "filter_all_tags_label": "All tags",
+    "filter_all_option_sets_label": "All types",
+    "filter_all_languages_label": "All languages",
+    "filter_reset": "Reset filters",
+    "loading_more": "Loading\u2026",
+    "empty_title_filtered": "No topics found",
+    "empty_description_filtered": "Try adjusting your filters.",
+    "topic_count": "{count, plural, one {# topic} other {# topics}}"
   },
   "topic": {
     "results_title": "Results",
