@@ -275,22 +275,6 @@ export function HeroSection() {
 
           {/* ── Left column: text ── */}
           <div className="flex flex-col">
-            {/* Eyebrow chip */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
-              className="mb-7"
-            >
-              <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/6 px-3.5 py-1.5 text-xs font-semibold text-primary tracking-wide">
-                <span className="relative flex size-2" aria-hidden>
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
-                  <span className="relative inline-flex size-2 rounded-full bg-primary" />
-                </span>
-                {t('hero_eyebrow')}
-              </span>
-            </motion.div>
-
             {/* H1 — split across two lines */}
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
