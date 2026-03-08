@@ -464,6 +464,14 @@ Managed in the **Vercel dashboard** under Project → Settings → Environment V
 After changing an env var in the Vercel dashboard, trigger a redeploy from the dashboard
 (or push a new commit).
 
+### Maintenance mode
+Toggle via `MAINTENANCE_MODE` env var in Vercel dashboard (Project → Settings → Environment Variables).
+- `MAINTENANCE_MODE=true` → all visitors see the coming soon page
+- `MAINTENANCE_MODE=false` (or unset) → site is live
+After changing, click "Redeploy" in Vercel dashboard (no code change needed).
+
+Team bypass: set cookie `bypass_maintenance=true` in browser DevTools (Application → Cookies → www.opiwo.com) to see the real site while maintenance mode is active.
+
 ### Local development
 ```bash
 cd /srv/opiwo/www
