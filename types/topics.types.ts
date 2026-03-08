@@ -24,3 +24,22 @@ export interface TopicsResponse {
     nextCursor: string | null;
   };
 }
+
+export interface TopicOption {
+  id: string;
+  value: string;
+  labelKey: string;
+  sortOrder: number;
+}
+
+export interface TopicDetail extends Topic {
+  optionsSnapshot: {
+    options: TopicOption[];
+  };
+  updatedAt: string;
+}
+
+export interface TopicDetailResponse {
+  success: true;
+  topic: TopicDetail;
+}
