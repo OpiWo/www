@@ -20,10 +20,26 @@ import { Label } from '@/components/ui/label';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-function isoToEmoji(iso: string) {
-  return [...iso.toUpperCase()]
-    .map((c) => String.fromCodePoint(0x1f1e6 - 65 + c.charCodeAt(0)))
-    .join('');
+/** Twemoji CDN image URL for a country flag — works on all platforms (no emoji font required). */
+function isoToFlagUrl(iso: string): string {
+  const codepoints = [...iso.toUpperCase()].map((c) =>
+    (0x1f1e6 + c.charCodeAt(0) - 65).toString(16),
+  );
+  return `https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/${codepoints.join('-')}.svg`;
+}
+
+function CountryFlag({ iso2, size = 20 }: { iso2: string; size?: number }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={isoToFlagUrl(iso2)}
+      alt={iso2.toUpperCase()}
+      width={size}
+      height={size}
+      style={{ display: 'inline-block', objectFit: 'contain', verticalAlign: 'middle' }}
+      loading="lazy"
+    />
+  );
 }
 
 const parsedCountries = defaultCountries.map(parseCountry);
@@ -43,7 +59,7 @@ function CountryDropdown({ selectedIso2, onSelect }: CountryDropdownProps) {
   const selected = parsedCountries.find((c) => c.iso2 === selectedIso2);
 
   const filtered = useMemo(() => {
-    const q = search.toLowerCase();
+    const q = search.toLowerCase().replace(/^\+/, '');
     if (!q) return parsedCountries;
     return parsedCountries.filter(
       (c) =>
@@ -75,8 +91,8 @@ function CountryDropdown({ selectedIso2, onSelect }: CountryDropdownProps) {
         className="flex h-11 items-center gap-1.5 rounded-l-md border border-r-0 border-input bg-muted/40 px-3 text-sm transition-colors hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
         style={{ minWidth: '72px' }}
       >
-        <span className="text-base leading-none" aria-hidden>
-          {selected ? isoToEmoji(selected.iso2) : '🌐'}
+        <span aria-hidden style={{ lineHeight: 1 }}>
+          {selected ? <CountryFlag iso2={selected.iso2} size={18} /> : '🌐'}
         </span>
         <span className="text-xs text-muted-foreground tabular-nums">
           +{selected?.dialCode ?? ''}
@@ -140,8 +156,8 @@ function CountryDropdown({ selectedIso2, onSelect }: CountryDropdownProps) {
                           : undefined
                       }
                     >
-                      <span className="text-base leading-none" aria-hidden>
-                        {isoToEmoji(country.iso2)}
+                      <span aria-hidden style={{ lineHeight: 1 }}>
+                        <CountryFlag iso2={country.iso2} size={18} />
                       </span>
                       <span className="flex-1 truncate text-foreground">
                         {country.name}
@@ -177,7 +193,6 @@ function PhoneField({ value, onChange, error, placeholder }: PhoneFieldProps) {
     usePhoneInput({
       defaultCountry: 'us',
       value,
-      forceDialCode: true,
       onChange: ({ phone: e164 }) => onChange(e164),
       inputRef,
     });
