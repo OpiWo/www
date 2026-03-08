@@ -190,6 +190,7 @@ function PhoneField({ value, onChange, error, placeholder }: PhoneFieldProps) {
       defaultCountry: 'us',
       value,
       charAfterDialCode: '',
+      disableFormatting: true,
       onChange: ({ phone: e164 }) => onChange(e164),
       inputRef,
     });
