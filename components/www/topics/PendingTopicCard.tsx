@@ -12,6 +12,7 @@ import type { Topic } from '@/types/topics.types';
 interface PendingTopicCardProps {
   topic: Topic;
   isAuthenticated: boolean;
+  onVoted?: (topicId: string) => void;
 }
 
 function VoteBar({
@@ -131,7 +132,7 @@ function VoteButton({
   );
 }
 
-export function PendingTopicCard({ topic, isAuthenticated }: PendingTopicCardProps) {
+export function PendingTopicCard({ topic, isAuthenticated, onVoted }: PendingTopicCardProps) {
   const t = useTranslations('pending_topics');
   const { vote, localVote, isPending, pendingDirection } = useVote(topic.id);
 
@@ -143,6 +144,7 @@ export function PendingTopicCard({ topic, isAuthenticated }: PendingTopicCardPro
 
   const handleVote = (direction: 'upvote' | 'downvote') => {
     vote(direction);
+    onVoted?.(topic.id);
   };
 
   return (

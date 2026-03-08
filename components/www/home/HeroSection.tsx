@@ -4,7 +4,6 @@ import { motion, useAnimate, useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/lib/i18n/navigation';
-import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────
@@ -305,15 +304,42 @@ export function HeroSection() {
               className="mt-9 flex flex-wrap items-center gap-3"
             >
               <Link href="/topics">
-                <Button size="lg" className="gap-2 px-7 shadow-lg">
-                  {t('cta_explore')}
-                  <ArrowRight className="size-4" />
-                </Button>
+                <motion.span
+                  whileHover="hover"
+                  className="relative inline-flex items-center gap-2.5 overflow-hidden rounded-xl bg-primary px-8 h-12 text-[15px] font-semibold text-primary-foreground cursor-pointer select-none"
+                  style={{ boxShadow: '0 4px 24px oklch(0.769 0.18 67 / 0.4)' }}
+                >
+                  {/* Shine sweep */}
+                  <motion.span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        'linear-gradient(105deg, transparent 40%, oklch(1 0 0 / 0.15) 50%, transparent 60%)',
+                      backgroundSize: '200% 100%',
+                    }}
+                    variants={{
+                      hover: {
+                        opacity: [0, 1, 0],
+                        transition: { duration: 0.5, ease: 'easeInOut' },
+                      },
+                    }}
+                    initial={{ opacity: 0 }}
+                  />
+                  <span className="relative z-10">{t('cta_explore')}</span>
+                  <motion.span
+                    className="relative z-10"
+                    variants={{ hover: { x: 4 } }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ArrowRight className="size-4" />
+                  </motion.span>
+                </motion.span>
               </Link>
               <Link href="/register">
-                <Button variant="outline" size="lg" className="px-7">
+                <span className="inline-flex items-center gap-1.5 h-12 px-6 text-[15px] font-medium text-foreground/70 hover:text-foreground border-b border-transparent hover:border-foreground/30 transition-all duration-200 cursor-pointer">
                   {t('cta_join')}
-                </Button>
+                </span>
               </Link>
             </motion.div>
 

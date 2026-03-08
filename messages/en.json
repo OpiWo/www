@@ -34,7 +34,13 @@
     "how_step2_title": "Vote",
     "how_step2_desc": "Cast your opinion anonymously or as a member. Your demographic profile enriches the data for everyone.",
     "how_step3_title": "Discover",
-    "how_step3_desc": "See how the world really thinks — broken down by country, age, and language. Real data, real people."
+    "how_step3_desc": "See how the world really thinks — broken down by country, age, and language. Real data, real people.",
+    "topics_pending_eyebrow": "Community vote",
+    "topics_pending_title": "Needs your vote",
+    "topics_pending_subtitle": "Help shape what gets published",
+    "topics_pending_all_voted": "You're all caught up",
+    "topics_pending_sign_in": "Sign in to vote on pending topics",
+    "topics_view_all": "View all topics"
   },
   "topics": {
     "page_title": "Topics",

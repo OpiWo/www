@@ -9,84 +9,65 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground text-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Brand column */}
-          <div className="col-span-1">
-            <div className="mb-3">
-              {/* Wordmark in footer — "Opi" light, "Wo" amber */}
-              <span className="text-xl font-semibold tracking-tight">
-                <span className="text-background">Opi</span>
-                <span style={{ color: 'oklch(0.769 0.18 67)' }}>Wo</span>
-              </span>
-            </div>
-            <p className="text-sm text-background/60 leading-relaxed max-w-xs">
-              {t('tagline')}
-            </p>
-          </div>
+    <footer className="bg-foreground text-background relative overflow-hidden">
+      {/* Amber glow behind wordmark */}
+      <div
+        className="pointer-events-none absolute -top-20 left-0 w-[600px] h-[300px] rounded-full opacity-[0.05] blur-3xl"
+        style={{ background: 'oklch(0.769 0.18 67)' }}
+        aria-hidden
+      />
 
-          {/* Navigation column */}
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-background/40 mb-4">
-              {t('nav_heading')}
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              <li>
-                <Link
-                  href="/topics"
-                  className="text-sm text-background/70 hover:text-background transition-colors"
-                >
-                  {nav('topics')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/login"
-                  className="text-sm text-background/70 hover:text-background transition-colors"
-                >
-                  {nav('login')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/register"
-                  className="text-sm text-background/70 hover:text-background transition-colors"
-                >
-                  {nav('register')}
-                </Link>
-              </li>
-            </ul>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-10 md:pb-14 relative z-10">
 
-          {/* Social / placeholder column */}
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-background/40 mb-4">
-              {t('community_heading')}
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              <li>
-                <span className="text-sm text-background/40 cursor-default">
-                  Twitter / X
-                </span>
-              </li>
-              <li>
-                <span className="text-sm text-background/40 cursor-default">
-                  Discord
-                </span>
-              </li>
-            </ul>
-          </div>
+        {/* Big wordmark */}
+        <div className="mb-6 md:mb-8">
+          <span className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tighter leading-none">
+            <span className="text-background">Opi</span>
+            <span style={{ color: 'oklch(0.769 0.18 67)' }}>Wo</span>
+          </span>
         </div>
 
+        {/* Tagline */}
+        <p className="text-base text-background/45 max-w-md leading-relaxed mb-12 md:mb-16">
+          {t('tagline')}
+        </p>
+
+        {/* Single row nav links */}
+        <nav aria-label="Footer navigation">
+          <ul className="flex flex-wrap gap-6 md:gap-10">
+            <li>
+              <Link
+                href="/topics"
+                className="text-sm text-background/55 hover:text-background/85 transition-colors duration-150"
+              >
+                {nav('topics')}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/login"
+                className="text-sm text-background/55 hover:text-background/85 transition-colors duration-150"
+              >
+                {nav('login')}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/register"
+                className="text-sm text-background/55 hover:text-background/85 transition-colors duration-150"
+              >
+                {nav('register')}
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-background/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-background/40">
+        <div className="mt-16 md:mt-20 pt-6 border-t border-background/10 flex items-center justify-between">
+          <p className="text-xs text-background/35">
             {t('copyright', { year: currentYear })}
           </p>
-          <p className="text-xs text-background/30">
-            opiwo.com
-          </p>
+          <p className="text-xs text-background/25">opiwo.com</p>
         </div>
       </div>
     </footer>
