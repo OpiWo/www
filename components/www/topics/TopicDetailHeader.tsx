@@ -63,7 +63,7 @@ export function TopicDetailHeader({ topic }: TopicDetailHeaderProps) {
       </h1>
 
       {/* Description */}
-      <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mb-6">
+      <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-5">
         {topic.description}
       </p>
 

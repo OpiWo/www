@@ -3,13 +3,10 @@ import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from '@/lib/i18n/navigation';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Skeleton } from '@/components/ui/skeleton';
 import { TopicDetailHeader } from '@/components/www/topics/TopicDetailHeader';
 import { OpinionForm } from '@/components/www/topics/OpinionForm';
-import { OptionsResultsChart } from '@/components/www/topics/OptionsResultsChart';
-import { DemographicsPanel } from '@/components/www/topics/DemographicsPanel';
-import { HistoricalChart } from '@/components/www/topics/HistoricalChart';
+import { TopicAnalyticsDashboard } from '@/components/www/topics/TopicAnalyticsDashboard';
 import type { TopicDetail } from '@/types/topics.types';
 import type { Metadata } from 'next';
 
@@ -52,20 +49,20 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
   };
 }
 
-function TopicPageSkeleton() {
+function DashboardSkeleton() {
   return (
-    <section className="py-12 md:py-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Skeleton className="h-4 w-24 mb-8" />
-        <div className="mb-1 h-0.5 w-12 bg-muted" />
-        <Skeleton className="h-4 w-48 mb-4 mt-6" />
-        <Skeleton className="h-10 w-3/4 mb-4" />
-        <Skeleton className="h-4 w-full max-w-xl mb-2" />
-        <Skeleton className="h-4 w-2/3 mb-8" />
-        <Skeleton className="h-64 w-full rounded-2xl mb-6" />
-        <Skeleton className="h-64 w-full rounded-2xl" />
+    <div className="space-y-6">
+      {/* KPI strip */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {[1, 2, 3].map((i) => (
+          <Skeleton key={i} className="h-24 rounded-2xl" />
+        ))}
       </div>
-    </section>
+      {/* Chart cards */}
+      <Skeleton className="h-64 w-full rounded-2xl" />
+      <Skeleton className="h-64 w-full rounded-2xl" />
+      <Skeleton className="h-64 w-full rounded-2xl" />
+    </div>
   );
 }
 
@@ -81,10 +78,10 @@ export default async function TopicDetailPage({ params }: TopicPageProps) {
   }
 
   return (
-    <section className="py-10 md:py-16 pb-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-10 pb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back navigation */}
-        <div className="mb-10">
+        <div className="mb-8">
           <Link
             href="/topics"
             className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -94,68 +91,29 @@ export default async function TopicDetailPage({ params }: TopicPageProps) {
           </Link>
         </div>
 
-        {/* Header */}
-        <div className="mb-12">
-          <TopicDetailHeader topic={topic} />
-        </div>
+        {/* Two-column grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-[38%_60%] gap-8 lg:gap-12 items-start">
 
-        {/* Opinion form — auth-gated vote widget */}
-        <div className="mb-8">
-          <OpinionForm topic={topic} />
-        </div>
-
-        {/* Results chart — full width */}
-        <div className="mb-8">
-          <Suspense
-            fallback={
-              <div className="rounded-2xl border border-border bg-card p-6">
-                <Skeleton className="h-5 w-32 mb-4" />
-                <div className="space-y-3">
-                  {[1, 2, 3].map((i) => (
-                    <Skeleton key={i} className="h-7 w-full rounded-md" />
-                  ))}
-                </div>
-              </div>
-            }
-          >
-            <OptionsResultsChart topic={topic} />
-          </Suspense>
-        </div>
-
-        {/* Analytics tabs */}
-        <div className="rounded-2xl border border-border bg-card overflow-hidden">
-          <Tabs defaultValue="demographics">
-            <div className="border-b border-border px-6 pt-5 pb-0">
-              <TabsList className="mb-0 -mb-px h-auto bg-transparent p-0 gap-0">
-                <TabsTrigger
-                  value="demographics"
-                  className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none pb-3 pt-0 px-4 text-sm"
-                >
-                  {t('tab_demographics')}
-                </TabsTrigger>
-                <TabsTrigger
-                  value="trend"
-                  className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none pb-3 pt-0 px-4 text-sm"
-                >
-                  {t('tab_trend')}
-                </TabsTrigger>
-              </TabsList>
+          {/* LEFT — sticky panel */}
+          <div className="lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-112px)] lg:overflow-y-auto">
+            <TopicDetailHeader topic={topic} />
+            <div className="mt-8">
+              <OpinionForm topic={topic} />
             </div>
-
-            <div className="p-6">
-              <TabsContent value="demographics" className="mt-0">
-                <Suspense fallback={<Skeleton className="h-48 w-full rounded-lg" />}>
-                  <DemographicsPanel topic={topic} />
-                </Suspense>
-              </TabsContent>
-
-              <TabsContent value="trend" className="mt-0">
-                <Suspense fallback={<Skeleton className="h-48 w-full rounded-lg" />}>
-                  <HistoricalChart topic={topic} />
-                </Suspense>
-              </TabsContent>
+            {/* Live data pill */}
+            <div className="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/60 text-xs text-muted-foreground">
+              <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              {t('response_pill_label')}
             </div>
-          </Tabs>
+          </div>
+
+          {/* RIGHT — analytics dashboard */}
+          <div>
+            <Suspense fallback={<DashboardSkeleton />}>
+              <TopicAnalyticsDashboard topic={topic} />
+            </Suspense>
+          </div>
+
         </div>
       </div>
     </section>

@@ -254,6 +254,39 @@
     "trend_empty": "Not enough data to show a trend yet.",
     "period_weekly": "Weekly",
     "period_monthly": "Monthly",
-    "period_yearly": "Yearly"
+    "period_yearly": "Yearly",
+
+    "kpi_total": "opinions worldwide",
+    "kpi_leading_label": "Leading option",
+    "kpi_switched_label": "Changed their mind",
+    "kpi_switched": "switched their vote",
+    "kpi_auth_required": "Sign in to see",
+
+    "results_view_bar": "Bar",
+    "results_view_donut": "Donut",
+    "results_leading_badge": "Leading",
+
+    "trend_title": "Trend",
+    "trend_locked_title": "Trend data is members-only",
+    "trend_locked_subtitle": "Sign in to see how opinions shifted over time",
+    "period_daily": "Daily",
+
+    "demo_title_gender": "By Gender",
+    "demo_title_age": "By Age Group",
+    "demo_title_country": "By Country",
+    "demo_country_subtitle": "Top 8 countries",
+    "demo_locked_title": "Demographics are members-only",
+    "demo_locked_subtitle": "Sign in to see who voted for what",
+
+    "flow_title": "Opinion Flow",
+    "flow_subtitle": "How voters changed their minds",
+    "flow_first_vote": "First vote",
+    "flow_most_common": "Most common switch: {from} → {to} ({count} voters)",
+    "flow_no_changes": "No one has changed their vote yet",
+    "flow_no_changes_sub": "Once voters update their opinion, shifts will appear here",
+    "flow_locked_title": "Opinion flow is members-only",
+    "flow_locked_subtitle": "Sign in to see how views are evolving",
+
+    "response_pill_label": "Live data"
   }
 }
