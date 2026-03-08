@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/lib/i18n/navigation';
-import { Button } from '@/components/ui/button';
 import { LocaleSwitcher } from '@/components/www/shared/LocaleSwitcher';
 import { ThemeToggle } from '@/components/www/shared/ThemeToggle';
 import { MobileNav } from '@/components/www/layout/MobileNav';
@@ -38,54 +37,64 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-background/80 border-b border-border/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-14 items-center justify-between gap-4">
-          {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0">
-            <img src="/logo.svg" alt="OpiWo" className="h-8 dark:hidden" />
-            <img src="/logo-dark.svg" alt="OpiWo" className="h-8 hidden dark:block" />
-          </Link>
+        <div className="flex h-16 items-center justify-between gap-6">
 
-          {/* Center nav — desktop */}
-          <nav className="hidden md:flex items-center gap-1">
-            <Link
-              href="/topics"
-              className={cn(
-                'px-3 py-1.5 text-sm font-medium rounded-md transition-colors',
-                pathname === '/topics'
-                  ? 'text-foreground bg-muted'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted/60',
-              )}
-            >
-              {t('topics')}
+          {/* Left: logo + nav */}
+          <div className="flex items-center gap-6 shrink-0">
+            <Link href="/" className="flex items-center">
+              <img src="/logo.svg" alt="OpiWo" className="h-8 dark:hidden" />
+              <img src="/logo-dark.svg" alt="OpiWo" className="h-8 hidden dark:block" />
             </Link>
-          </nav>
 
-          {/* Right side */}
-          <div className="flex items-center gap-1">
+            <nav className="hidden md:flex items-center gap-5">
+              <Link
+                href="/topics"
+                className={cn(
+                  'text-sm font-medium transition-colors duration-150',
+                  pathname === '/topics'
+                    ? 'text-foreground'
+                    : 'text-muted-foreground hover:text-foreground',
+                )}
+              >
+                {t('topics')}
+              </Link>
+            </nav>
+          </div>
+
+          {/* Right: utilities + auth */}
+          <div className="flex items-center gap-2">
             <LocaleSwitcher />
             <ThemeToggle />
 
-            {/* Auth controls — desktop */}
-            <div className="hidden md:flex items-center gap-1 ml-1">
+            {/* Auth — desktop */}
+            <div className="hidden md:flex items-center gap-2 ml-2">
               {isLoading ? (
-                <div className="h-7 w-20 rounded-lg bg-muted animate-pulse" />
+                <div className="h-8 w-28 rounded-full bg-muted animate-pulse" />
               ) : user ? (
-                <UserMenu
-                  displayName={user.displayName}
-                  onLogout={handleLogout}
-                />
+                <UserMenu displayName={user.displayName} onLogout={handleLogout} />
               ) : (
-                <Link href="/login">
-                  <Button variant="outline" size="sm">
+                <>
+                  <Link
+                    href="/login"
+                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 px-1"
+                  >
                     {t('login')}
-                  </Button>
-                </Link>
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="inline-flex items-center h-8 px-4 rounded-full text-sm font-semibold transition-all duration-150 hover:opacity-90 active:scale-95"
+                    style={{ background: 'oklch(0.769 0.18 67)', color: 'oklch(0.13 0.02 261)' }}
+                  >
+                    {t('register')}
+                  </Link>
+                </>
               )}
             </div>
 
             {/* Mobile hamburger */}
             <MobileNav user={user ?? undefined} onLogout={handleLogout} isLoading={isLoading} />
           </div>
+
         </div>
       </div>
     </header>
