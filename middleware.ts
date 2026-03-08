@@ -4,7 +4,7 @@ import { routing } from './lib/i18n/routing';
 
 const intlMiddleware = createMiddleware(routing);
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Always allow the maintenance page and static assets through
@@ -12,7 +12,7 @@ export function proxy(request: NextRequest) {
     pathname.startsWith('/maintenance') ||
     pathname.startsWith('/_next') ||
     pathname.startsWith('/_vercel') ||
-    pathname.match(/\.(.*)$/)  // static files with extensions
+    pathname.match(/\.(.*)$/)
   ) {
     return NextResponse.next();
   }
@@ -21,12 +21,8 @@ export function proxy(request: NextRequest) {
   const isMaintenanceMode = process.env.MAINTENANCE_MODE === 'true';
 
   if (isMaintenanceMode) {
-    // Check for bypass cookie
     const bypassCookie = request.cookies.get('bypass_maintenance');
-    if (bypassCookie?.value === 'true') {
-      // Has bypass — fall through to normal intl middleware
-    } else {
-      // Rewrite to maintenance page
+    if (bypassCookie?.value !== 'true') {
       const url = request.nextUrl.clone();
       url.pathname = '/maintenance';
       return NextResponse.rewrite(url);
