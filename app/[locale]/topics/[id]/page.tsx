@@ -6,6 +6,7 @@ import { Link } from '@/lib/i18n/navigation';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Skeleton } from '@/components/ui/skeleton';
 import { TopicDetailHeader } from '@/components/www/topics/TopicDetailHeader';
+import { OpinionForm } from '@/components/www/topics/OpinionForm';
 import { OptionsResultsChart } from '@/components/www/topics/OptionsResultsChart';
 import { DemographicsPanel } from '@/components/www/topics/DemographicsPanel';
 import { HistoricalChart } from '@/components/www/topics/HistoricalChart';
@@ -96,6 +97,11 @@ export default async function TopicDetailPage({ params }: TopicPageProps) {
         {/* Header */}
         <div className="mb-12">
           <TopicDetailHeader topic={topic} />
+        </div>
+
+        {/* Opinion form — auth-gated vote widget */}
+        <div className="mb-8">
+          <OpinionForm topic={topic} />
         </div>
 
         {/* Results chart — full width */}

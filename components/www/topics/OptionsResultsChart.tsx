@@ -48,9 +48,9 @@ function LockedCard() {
       </div>
 
       {/* Lock overlay */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center bg-card/80 backdrop-blur-[2px] rounded-2xl gap-4">
-        <div className="flex size-14 items-center justify-center rounded-full bg-primary/10 border border-primary/20">
-          <Lock className="size-6 text-primary" />
+      <div className="absolute inset-0 flex flex-col items-center justify-center bg-card/80 backdrop-blur-[2px] rounded-2xl gap-3">
+        <div className="flex size-12 items-center justify-center rounded-full bg-muted border border-border">
+          <Lock className="size-5 text-muted-foreground" />
         </div>
         <div className="text-center px-4">
           <p className="font-semibold text-foreground mb-1">{t('locked_results_title')}</p>
@@ -58,7 +58,7 @@ function LockedCard() {
         </div>
         <Link
           href={`/${locale}/login`}
-          className={cn(buttonVariants({ size: 'sm' }), 'bg-primary text-primary-foreground hover:bg-primary/90')}
+          className={cn(buttonVariants({ size: 'sm', variant: 'outline' }))}
         >
           {t('locked_cta')}
         </Link>
