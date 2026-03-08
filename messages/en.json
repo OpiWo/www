@@ -16,7 +16,10 @@
     "stats_topics": "Topics published",
     "stats_opinions": "Opinions submitted",
     "trending_title": "Trending Topics",
-    "trending_empty": "No trending topics right now."
+    "trending_empty": "No trending topics right now.",
+    "hero_eyebrow": "Global opinions, live",
+    "hero_bars_label": "Live opinions",
+    "trending_eyebrow": "Featured"
   },
   "topics": {
     "page_title": "Topics",
@@ -80,8 +83,15 @@
     "share": "Share",
     "copied": "Copied!",
     "language": "Language",
+    "language_english": "English",
     "theme_light": "Light",
     "theme_dark": "Dark",
     "theme_system": "System"
+  },
+  "footer": {
+    "tagline": "The world's opinion, quantified. Explore what people think on topics that matter.",
+    "nav_heading": "Platform",
+    "community_heading": "Community",
+    "copyright": "© {year} OpiWo. All rights reserved."
   }
 }

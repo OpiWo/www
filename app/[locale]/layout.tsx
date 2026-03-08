@@ -4,6 +4,8 @@ import { ThemeProvider } from 'next-themes';
 import { Toaster } from 'sonner';
 import QueryProvider from '@/components/QueryProvider';
 import { AuthProvider } from '@/hooks/use-auth';
+import { Header } from '@/components/www/layout/Header';
+import { Footer } from '@/components/www/layout/Footer';
 
 export default async function LocaleLayout({ children }: { children: React.ReactNode }) {
   const locale = await getLocale();
@@ -14,7 +16,11 @@ export default async function LocaleLayout({ children }: { children: React.React
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
         <QueryProvider>
           <AuthProvider>
-            {children}
+            <div className="min-h-screen flex flex-col">
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
           </AuthProvider>
         </QueryProvider>
         <Toaster richColors position="top-right" closeButton />

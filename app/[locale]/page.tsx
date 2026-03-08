@@ -1,21 +1,36 @@
-import { useTranslations } from 'next-intl';
+import { getLocale } from 'next-intl/server';
+import { HeroSection } from '@/components/www/home/HeroSection';
+import { StatsBanner } from '@/components/www/home/StatsBanner';
+import { TrendingTopics } from '@/components/www/home/TrendingTopics';
+import type { Topic, TopicsResponse } from '@/types/topics.types';
 
-export default function HomePage() {
-  const t = useTranslations('home');
+export const revalidate = 60;
+
+async function fetchTrendingTopics(locale: string): Promise<Topic[]> {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (!apiUrl) return [];
+  try {
+    const res = await fetch(
+      `${apiUrl}/topics?status=published&lang=${locale}&limit=6`,
+      { next: { revalidate: 60 } },
+    );
+    if (!res.ok) return [];
+    const data: TopicsResponse = await res.json();
+    return data.topics ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export default async function HomePage() {
+  const locale = await getLocale();
+  const initialTopics = await fetchTrendingTopics(locale);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-background px-4">
-      <div className="text-center space-y-4 max-w-2xl">
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <img src="/logo.svg" alt="OpiWo" className="h-10" />
-        </div>
-        <h1 className="text-5xl font-bold tracking-tighter text-foreground">
-          {t('hero_title')}
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          {t('hero_subtitle')}
-        </p>
-        <p className="text-xs text-muted-foreground/50 pt-8">WWW10 — Project initialized</p>
-      </div>
-    </main>
+    <>
+      <HeroSection />
+      <StatsBanner />
+      <TrendingTopics initialTopics={initialTopics} />
+    </>
   );
 }
