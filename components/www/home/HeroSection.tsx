@@ -24,7 +24,7 @@ function OpinionBars({ label }: { label: string }) {
       className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-2 pr-8 xl:pr-0"
       aria-hidden
     >
-      <div className="text-[10px] font-mono tracking-widest text-muted-foreground/40 uppercase mb-3">
+      <div className="text-[10px] font-medium tracking-widest text-muted-foreground/40 uppercase mb-3">
         {label}
       </div>
       {bars.map((bar, i) => (
@@ -37,7 +37,7 @@ function OpinionBars({ label }: { label: string }) {
               transition={{ duration: 0.8, delay: bar.delay, ease: 'easeOut' }}
             />
           </div>
-          <span className="font-mono text-[10px] text-muted-foreground/40">{bar.width}</span>
+          <span className="text-[10px] text-muted-foreground/40">{bar.width}</span>
         </div>
       ))}
     </motion.div>

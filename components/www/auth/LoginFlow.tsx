@@ -102,7 +102,7 @@ function AuthSidePanelMobile({ step }: { step: AuthStep }) {
       <div className="flex items-center gap-2 mb-1">
         <OpiwoBadge />
       </div>
-      <p className="text-[0.7rem] font-mono tracking-widest uppercase text-primary">{eyebrow}</p>
+      <p className="text-[0.7rem] font-medium tracking-widest uppercase text-primary">{eyebrow}</p>
       <h2 className="text-xl font-bold text-background dark:text-foreground tracking-tight">
         {title}
       </h2>

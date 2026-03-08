@@ -128,12 +128,12 @@ export function OtpStep({ contact, onLoginSuccess, onRegisterRequired, onBack }:
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
     >
-      <p className="text-[0.65rem] font-mono tracking-[0.2em] uppercase text-primary mb-2">
+      <p className="text-[0.65rem] font-medium tracking-[0.2em] uppercase text-primary mb-2">
         {t('step_otp')}
       </p>
       <h1 className="text-3xl font-bold tracking-tight text-foreground mb-1">{t('otp_title')}</h1>
       <p className="text-sm text-muted-foreground mb-2 leading-relaxed">{t('otp_subtitle')}</p>
-      <p className="text-sm font-mono font-semibold text-foreground mb-8">{contact}</p>
+      <p className="text-sm font-semibold text-foreground mb-8">{contact}</p>
 
       {/* OTP cells */}
       <div className="flex gap-2.5 mb-6" aria-label={t('otp_label')}>

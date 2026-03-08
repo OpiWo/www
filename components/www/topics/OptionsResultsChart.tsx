@@ -128,7 +128,7 @@ export function OptionsResultsChart({ topic }: OptionsResultsChartProps) {
             {t('results_total', { count: total })}
           </p>
         </div>
-        <span className="font-mono text-2xl font-bold text-foreground tabular-nums">
+        <span className="text-2xl font-bold text-foreground tabular-nums">
           {total.toLocaleString()}
         </span>
       </div>

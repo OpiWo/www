@@ -28,7 +28,7 @@ export function Footer() {
 
           {/* Navigation column */}
           <div>
-            <h3 className="text-xs font-mono uppercase tracking-widest text-background/40 mb-4">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-background/40 mb-4">
               {t('nav_heading')}
             </h3>
             <ul className="flex flex-col gap-2.5">
@@ -61,7 +61,7 @@ export function Footer() {
 
           {/* Social / placeholder column */}
           <div>
-            <h3 className="text-xs font-mono uppercase tracking-widest text-background/40 mb-4">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-background/40 mb-4">
               {t('community_heading')}
             </h3>
             <ul className="flex flex-col gap-2.5">
@@ -84,7 +84,7 @@ export function Footer() {
           <p className="text-xs text-background/40">
             {t('copyright', { year: currentYear })}
           </p>
-          <p className="text-xs text-background/30 font-mono">
+          <p className="text-xs text-background/30">
             opiwo.com
           </p>
         </div>

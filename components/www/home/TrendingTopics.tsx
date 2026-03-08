@@ -71,7 +71,7 @@ export function TrendingTopics({ initialTopics }: TrendingTopicsProps) {
           className="mb-10 flex items-end justify-between"
         >
           <div>
-            <p className="text-xs font-mono uppercase tracking-widest text-primary mb-2">
+            <p className="text-xs font-medium uppercase tracking-widest text-primary mb-2">
               {t('trending_eyebrow')}
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-foreground">

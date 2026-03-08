@@ -111,7 +111,7 @@ export function RegisterStep({ registrationToken }: RegisterStepProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
     >
-      <p className="text-[0.65rem] font-mono tracking-[0.2em] uppercase text-primary mb-2">
+      <p className="text-[0.65rem] font-medium tracking-[0.2em] uppercase text-primary mb-2">
         {t('step_register')}
       </p>
       <h1 className="text-3xl font-bold tracking-tight text-foreground mb-1">
@@ -227,7 +227,7 @@ export function RegisterStep({ registrationToken }: RegisterStepProps) {
                     type="text"
                     maxLength={2}
                     placeholder={t('country_placeholder')}
-                    className="h-11 uppercase font-mono"
+                    className="h-11 uppercase"
                     aria-invalid={!!errors.country}
                     {...register('country')}
                   />

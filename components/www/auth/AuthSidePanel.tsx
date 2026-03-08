@@ -79,7 +79,7 @@ export function AuthSidePanel({ step }: AuthSidePanelProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
         >
-          <p className="text-[0.65rem] font-mono tracking-[0.2em] uppercase text-primary mb-4">
+          <p className="text-[0.65rem] font-medium tracking-[0.2em] uppercase text-primary mb-4">
             {meta.step}
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-background dark:text-foreground whitespace-pre-line mb-3">
@@ -112,7 +112,7 @@ export function AuthSidePanel({ step }: AuthSidePanelProps) {
 function AnimatedBars() {
   return (
     <div className="space-y-3 w-full max-w-xs">
-      <p className="text-[0.65rem] font-mono tracking-widest uppercase text-background/40 dark:text-muted-foreground mb-4">
+      <p className="text-[0.65rem] font-medium tracking-widest uppercase text-background/40 dark:text-muted-foreground mb-4">
         Live opinion sample
       </p>
       {BARS.map((bar) => (
@@ -121,7 +121,7 @@ function AnimatedBars() {
             <span className="text-xs font-medium text-background/70 dark:text-muted-foreground">
               {bar.label}
             </span>
-            <span className="text-xs font-mono font-semibold" style={{ color: bar.color }}>
+            <span className="text-xs font-semibold" style={{ color: bar.color }}>
               {bar.pct}%
             </span>
           </div>

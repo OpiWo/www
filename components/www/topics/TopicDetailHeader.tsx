@@ -38,7 +38,7 @@ export function TopicDetailHeader({ topic }: TopicDetailHeaderProps) {
 
       {/* Meta row */}
       <div className="flex flex-wrap items-center gap-3 mb-4">
-        <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground border border-border/60 rounded px-2 py-1">
+        <span className="inline-flex items-center gap-1.5 font-medium text-[10px] uppercase tracking-widest text-muted-foreground border border-border/60 rounded px-2 py-1">
           <Globe className="size-3" />
           {topic.originalLanguage}
         </span>

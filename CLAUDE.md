@@ -287,8 +287,12 @@ Wordmark:   "OpiWo" in Geist Sans semibold. "Opi" in foreground color,
 ### Typography
 | Font | Variable | Usage |
 |---|---|---|
-| Geist Sans | `--font-geist-sans` | All human-readable text: headings, body, nav, labels |
-| Geist Mono | `--font-geist-mono` | System identifiers: IDs, slugs, API keys, code snippets |
+| Plus Jakarta Sans | `--font-plus-jakarta-sans` | All text: headings, body, nav, labels, badges — sole font family |
+
+**Font policy:**
+- `font-mono` is reserved exclusively for actual code snippets and OTP digit inputs (where monospace character alignment is functionally required).
+- Never use `font-mono` for UI labels, eyebrow text, badges, or decorative uppercase strings.
+- For label/eyebrow styling, use `font-medium tracking-widest uppercase` instead of `font-mono`.
 
 **Type scale:**
 - Hero heading: `text-5xl md:text-7xl font-bold tracking-tighter`

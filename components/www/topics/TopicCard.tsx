@@ -21,7 +21,7 @@ export function TopicCard({ topic }: TopicCardProps) {
         <div className="h-full rounded-xl border border-border bg-card p-5 shadow-sm transition-shadow duration-200 group-hover:shadow-md group-hover:border-border/80 dark:group-hover:shadow-primary/5">
           {/* Header row: language + date */}
           <div className="mb-3 flex items-center justify-between">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/70 border border-border/60 rounded px-1.5 py-0.5">
+            <span className="font-medium text-[10px] uppercase tracking-widest text-muted-foreground/70 border border-border/60 rounded px-1.5 py-0.5">
               {topic.originalLanguage}
             </span>
             <time className="text-xs text-muted-foreground">

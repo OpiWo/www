@@ -17,14 +17,14 @@ export function LocaleSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <Button variant="ghost" size="sm" className="gap-1 font-mono text-xs">
+          <Button variant="ghost" size="sm" className="gap-1 text-xs">
             EN
             <ChevronDown className="size-3 opacity-60" />
           </Button>
         }
       />
       <DropdownMenuContent align="end">
-        <DropdownMenuItem className="font-mono text-xs">
+        <DropdownMenuItem className="text-xs">
           <span className="mr-2 text-primary">✓</span>
           {t('language_english')}
         </DropdownMenuItem>

@@ -66,7 +66,7 @@ export function PhoneStep({ onSuccess }: PhoneStepProps) {
       transition={{ duration: 0.35 }}
     >
       {/* Eyebrow */}
-      <p className="text-[0.65rem] font-mono tracking-[0.2em] uppercase text-primary mb-2">
+      <p className="text-[0.65rem] font-medium tracking-[0.2em] uppercase text-primary mb-2">
         {t('step_phone')}
       </p>
       <h1 className="text-3xl font-bold tracking-tight text-foreground mb-1">{t('phone_title')}</h1>

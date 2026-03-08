@@ -102,7 +102,7 @@ export default async function TopicsPage({ searchParams }: TopicsPageProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page header */}
         <div className="mb-10">
-          <p className="text-xs font-mono uppercase tracking-widest text-primary mb-2">
+          <p className="text-xs font-medium uppercase tracking-widest text-primary mb-2">
             Explore
           </p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
